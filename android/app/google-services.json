@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "707149488653",
+    "project_id": "login-e8a87",
+    "storage_bucket": "login-e8a87.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:707149488653:android:d86f34fc2f65d85269ab44",
+        "android_client_info": {
+          "package_name": "com.myworld_harsh.login"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "707149488653-5daucgmbvbvr6qh0h03c3peerchmqm8c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.myworld_harsh.login",
+            "certificate_hash": "578136bb9babea745b30947859278f2fd063f5f6"
+          }
+        },
+        {
+          "client_id": "707149488653-57qmv910bs5fn9oprj369o7h92p5u8bc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTh_7l1COJAQ7tcPCLG3R7i_-mgq5xhi4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "707149488653-57qmv910bs5fn9oprj369o7h92p5u8bc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'logic.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,50 +27,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  String mob = 'uty';
-  String otp = 'lkj';
-  FirebaseAuth _auth = FirebaseAuth.instance;
-  late String verificationId;
-
-  void verification(PhoneAuthCredential verAuthCredential) async {
-    try {
-      final authCredential =
-          await _auth.signInWithCredential(verAuthCredential);
-
-      if (authCredential?.user != null) {
-        print("Verified");
-      }
-    } on FirebaseAuthException catch (e) {
-      print("Wrong OTP");
-    }
-  }
-
-  registerUser(String mob) async {
-    await _auth.verifyPhoneNumber(
-      phoneNumber: mob,
-      timeout: Duration(seconds: 90),
-      verificationCompleted: (PhoneAuthCredential credential) async {},
-      verificationFailed: (FirebaseAuthException e) {
-        if (e.code == 'invalid-phone-number') {
-          print('The provided phone number is not valid.');
-        }
-
-        // Handle other errors
-      },
-      codeSent: (String verificationId, int? resendToken) async {
-        this.verificationId = verificationId;
-        // Update the UI - wait for the user to enter the SMS code
-        String smsCode = 'xxxx';
-
-        // Create a PhoneAuthCredential with the code
-        PhoneAuthCredential credential = PhoneAuthProvider.credential(
-            verificationId: verificationId, smsCode: smsCode);
-
-        // Sign the user in (or link) with the credential
-      },
-      codeAutoRetrievalTimeout: (String verificationId) {},
-    );
-  }
+  late String mob;
+  late String otp;
 
   @override
   Widget build(BuildContext context) {
@@ -119,10 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           ElevatedButton(
             onPressed: () {
-              PhoneAuthCredential verAuthCredential =
-                  PhoneAuthProvider.credential(
-                      verificationId: verificationId, smsCode: otp);
-              verification(verAuthCredential);
+              otpverify(otp);
             },
             child: const Text('Verify'),
           )
